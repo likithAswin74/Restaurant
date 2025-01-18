@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+<header style="background-image: url('static/assets/img/pexels-ella-olsson-572949-1640774.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat; height: 400px; color: white; display: flex; justify-content: center; align-items: center; margin-top: 50px;">
+    <div class="container px-4 px-lg-5 my-5">
+        <div class="text-center text-black">
+            <h1 class="display-4 fw-bolder">Welcome to LRDMJ Restaurant</h1>
+            <p class="lead fw-normal text-gray-50 mb-0">"Savor the Flavors of Tradition and Innovation"</p>
+        </div>
+    </div>
+</header>
+
+
+<div class="container-fluid px-0">
+    <section class="menu-section bg-white p-4 rounded shadow">
+        <!-- Non-Veg -->
+        <div class="row align-items-center mb-4 menu-item" onclick="location.href='{{ url_for('foods', name='Non-Veg') }}'">
+            <div class="col-md-4 text-center">
+                <img src="{{ url_for('static', filename='assets/img/non-veg.jpg') }}" alt="Non-Veg" class="img-fluid rounded-circle shadow">
+            </div>
+            <div class="col-md-8">
+                <h2 class="menu-title text-success">Non-Veg</h2>
+                <p class="menu-description">
+                    Savor the rich and flavorful world of non-vegetarian dishes. Perfectly cooked with spices and love.
+                </p>
+            </div>
+        </div>
+
+        <!-- Veg -->
+        <div class="row align-items-center mb-4 menu-item" onclick="location.href='{{ url_for('foods', name='Veg') }}'">
+            <div class="col-md-4 text-center">
+                <img src="{{ url_for('static', filename='assets/img/veg.jpg') }}" alt="Veg" class="img-fluid rounded-circle shadow">
+            </div>
+            <div class="col-md-8">
+                <h2 class="menu-title text-primary">Veg</h2>
+                <p class="menu-description">
+                    Dive into the freshness of green and healthy vegetarian delights that you'll love.
+                </p>
+            </div>
+        </div>
+
+        <!-- Desserts & Juices -->
+        <div class="row align-items-center menu-item" onclick="location.href='{{ url_for('foods', name='Desserts&Juices') }}'">
+            <div class="col-md-4 text-center">
+                <img src="{{ url_for('static', filename='assets/img/Desserts&Juices.jpg') }}" alt="Desserts & Juices" class="img-fluid rounded-circle shadow">
+            </div>
+            <div class="col-md-8">
+                <h2 class="menu-title text-warning">Desserts & Juices</h2>
+                <p class="menu-description">
+                    Sweeten your day with delightful desserts and refreshing juices.
+                </p>
+            </div>
+        </div>
+
+                <!-- Chips and Snacks -->
+        <div class="row align-items-center menu-item mt-3" onclick="location.href='{{ url_for('foods', name='Chips&Snacks') }}'">
+            <div class="col-md-4 text-center">
+                <img src="{{ url_for('static', filename='assets/img/Chips&Snacks.jpg') }}" alt="Chips and Snacks" class="img-fluid rounded-circle shadow">
+            </div>
+            <div class="col-md-8">
+                <h2 class="menu-title text-danger">Chips & Snacks</h2>
+                <p class="menu-description">
+                    Sweeten your day with delightful desserts and refreshing juices.
+                </p>
+            </div>
+        </div>
+    </section>
+</div>
+
+
+{% endblock %}

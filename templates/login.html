@@ -1,0 +1,35 @@
+{% from "bootstrap5/form.html" import render_form %}
+{% extends "base.html" %}
+{% block content %}
+<header style="background-image: url('static/assets/img/login.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat; height: 400px; color: white; display: flex; justify-content: center; align-items: center; margin-top: 50px;">
+    <div class="container px-4 px-lg-5 my-5">
+        <div class="text-center text-black">
+            <h1 class="display-4 fw-bolder">Log In</h1>
+        </div>
+    </div>
+</header>
+
+<main class="mb-4 mt-4">
+  <div class="container">
+    <div class="row">
+      <!-- TODO: add a flash message here for users registering twice -->
+      {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        {% for message in messages %}
+            <p class="flash" style="color: red;">{{ message }}</p>
+        {% endfor %}
+      {% endif %}
+      {% endwith %}
+
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <!--TODO: render login form here-->
+         {{ render_form(form, novalidate=True)}}
+
+          <a href="{{ url_for('forgot_password') }}" class="btn btn-link btn-success" style="text-decoration: none; margin-top:20px">Forgot Password?</a>
+
+      </div>
+    </div>
+  </div>
+</main>
+
+{% endblock %}

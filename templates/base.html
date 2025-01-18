@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>LRDMJ Restaurant</title>
+    <!-- Bootstrap loading -->
+    {{ bootstrap.load_css() }}
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/styles.css')}}">
+</head>
+
+<body>
+<!-- Nav-bar Content -->
+<nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container px-4 px-lg-1">
+        <a class="navbar-brand d-flex align-items-center" href="#!">
+            <i class="bi bi-egg-fried me-2 navbar-icon"></i>
+            <span class="restaurant-name">LRDMJ Restaurant</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="{{ url_for('home') }}">Home</a>
+                </li>
+                {% if not logged_in %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('register') }}">Register</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('login') }}">Login</a>
+                </li>
+                {% endif %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('about_us') }}">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('contact_us') }}">Contact Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('logout') }}">Log Out</a>
+                </li>
+            </ul>
+            <div class="d-flex align-items-center">
+                <!-- Show username if logged in -->
+                {% if logged_in %}
+                <span class="navbar-text me-3">Hello, {{ current_user.name }}</span>
+                {% endif %}
+                <form class="d-flex" action="{{ url_for('cart') }}" method="get">
+                    <button class="btn btn-outline-dark d-flex align-items-center" type="submit">
+                        <i class="bi bi-cart-fill me-1 cart-icon"></i>
+                        <span class="cart-text">Cart</span>
+                        <span class="badge bg-dark text-white ms-1 rounded-pill">{{ cart_items_count }}</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</nav>
+
+
+{% block content %} {% endblock %}
+
+
+<!-- Footer Content -->
+<div class="container-fluid px-0">
+    <footer style="background-color: rgb(234, 232, 218);">
+        <div class="container p-4 mt-0">
+            <div class="row mt-5">
+                <!-- About Us -->
+                <div class="col-lg-6 col-md-12 mb-4">
+                    <h5 class="mb-3" style="letter-spacing: 2px; color: #818963;">About LRDMJ Restaurant</h5>
+                    <p>
+                        Welcome to LRDMJ Restaurant, where every meal is a celebration of flavor and tradition.
+                        We pride ourselves on offering the finest dishes made from fresh, locally-sourced ingredients.
+                        Whether you're dining in, taking out, or hosting a special event, our team is here to make your experience unforgettable.
+                    </p>
+                </div>
+                <!-- Social Links -->
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5 class="mb-3" style="letter-spacing: 2px; color: #818963;">Follow Us</h5>
+                    <ul class="list-unstyled mb-0">
+                        <li class="mb-1">
+                            <a href="https://www.instagram.com/your-instagram-link" target="_blank" style="text-decoration: none;color: #4f4f4f;">
+                                <img src="https://img.freepik.com/premium-psd/instagram-icon-isolated-transparent-background_943194-19154.jpg?w=740" alt="Instagram" style="width: 20px; height: 20px; margin-right: 10px;">Instagram
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://wa.me/your-whatsapp-number" target="_blank" style="text-decoration: none;color: #4f4f4f;">
+                                <img src="https://img.freepik.com/premium-psd/3d-square-with-whatsapp-logo_1073073-362.jpg?w=996" alt="WhatsApp" style="width: 20px; height: 20px; margin-right: 10px;">WhatsApp
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Opening Hours -->
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5 class="mb-1" style="letter-spacing: 2px; color: #818963;">Opening Hours</h5>
+                    <table class="table" style="color: #4f4f4f; border-color: #666;">
+                        <tbody>
+                            <tr>
+                                <td>Monday - Friday:</td>
+                                <td>10:00 AM - 10:00 PM</td>
+                            </tr>
+                            <tr>
+                                <td>Saturday:</td>
+                                <td>10:00 AM - 11:00 PM</td>
+                            </tr>
+                            <tr>
+                                <td>Sunday:</td>
+                                <td>9:00 AM - 9:00 PM</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+            © 2025 LRDMJ Restaurant. All Rights Reserved. Designed with ❤️ by <a class="text-dark" style="text-decoration: none;" href="https://www.instagram.com/likith0226/">Likith Aswin S</a>.
+        </div>
+    </footer>
+</div>
+
+
+<!-- Script Content -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+
+</body>
+</html>

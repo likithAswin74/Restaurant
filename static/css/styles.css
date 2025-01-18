@@ -1,0 +1,126 @@
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+.navbar {
+    background-color: rgb(234, 232, 218); /* Olive Yellow */
+    transition: top 0.3s ease-in-out;
+}
+
+/* Navbar Brand Styles */
+.navbar .navbar-brand {
+    display: flex;
+    align-items: center;
+}
+
+/* Restaurant Name */
+.restaurant-name {
+    color: rgb(37,33,33); /* Dark Gray */
+    font-family: 'Playfair Display', serif; /* Stylish Font */
+    font-size: 1.8rem;
+    margin-left: 5px; /* Space between icon and text */
+}
+
+/* Navbar Icon (Egg) */
+.navbar .navbar-icon {
+    color: #f2d349; /* Golden Yellow */
+    font-size: 1.8rem;
+}
+
+/* Nav Links */
+.navbar .nav-link {
+    color: #818963; /* Olive green */
+    font-size: 18px; /* Ensure consistent font size */
+}
+
+.navbar .nav-link:hover {
+    color: #f2d349; /* Golden Yellow */
+}
+
+/* Cart Button */
+.navbar .btn-outline-dark {
+    color: #818963; /* Olive green for Cart Text */
+    border-color: #f2d349; /* Border in Golden Yellow */
+}
+
+.navbar .btn-outline-dark:hover {
+    background-color: #8aa899; /* Soft Mint */
+    color: #5c6e58; /* Olive Green */
+}
+
+/* Cart Icon */
+.navbar .cart-icon {
+    color: #f2d349; /* Golden Yellow */
+}
+
+/* Cart Text */
+.navbar .cart-text {
+    margin-left: 5px; /* Space between icon and text */
+    color: #555555; /* Dark Gray */
+}
+
+/* Adjust Navbar Margin */
+.custom-header-margin {
+    margin-top: 70px; /* Adjust as needed */
+}
+
+
+/* index.html styling for three dishes */
+.menu-item {
+        cursor: pointer;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border-radius: 8px;
+    }
+
+    .menu-item:hover {
+        transform: scale(1.05);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .menu-title {
+        font-family: 'Lobster', cursive;
+        font-size: 2rem;
+    }
+
+    .menu-description {
+        font-family: 'Poppins', sans-serif;
+        font-size: 1rem;
+        color: #666;
+    }
+        .menu-item img {
+        width: 250px; /* Set a consistent width */
+        height: 200px; /* Set a consistent height */
+        object-fit: cover; /* Ensure the image fits perfectly */
+        border-radius: 50%; /* Apply the oval shape */
+    }
+    .custom-field {
+        background-color: #818963; /* Field background color */
+        color: white; /* Text color */
+        border: none; /* Remove border for cleaner look */
+        border-radius: 5px; /* Optional rounded corners */
+        padding: 10px; /* Add some padding for better usability */
+        width: 100%; /* Make fields responsive */
+        font-size: 16px; /* Adjust font size */
+    }
+
+
+    /* form button color */
+
+.btn-success {
+    background-color: rgb(234, 232, 218); /* Default color */
+    border-color: #818963;
+    color: #818963;
+}
+
+.btn-success:hover,
+.btn-success:active,
+.btn-success:focus {
+     background-color: #f2d349 !important; /* Ensure this color is applied when clicked */
+    border-color: #f2d349 !important; /* Ensure border color is consistent */
+    color: #818963; /* Optional: Ensure text color stays consistent */
+}
+
+.btn-success:focus {
+    outline: none; /* Remove focus outline if not needed */
+}
+
