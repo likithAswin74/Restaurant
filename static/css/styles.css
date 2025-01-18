@@ -20,6 +20,11 @@ body {
     font-size: 1.8rem;
     margin-left: 5px; /* Space between icon and text */
 }
+@media (max-width: 576px) {
+    .restaurant-name {
+        font-size: 1.2rem; /* Reduce size on smaller screens */
+    }
+}
 
 /* Navbar Icon (Egg) */
 .navbar .navbar-icon {
