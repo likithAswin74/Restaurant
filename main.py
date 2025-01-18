@@ -11,6 +11,8 @@ from functools import wraps
 import random
 import time
 import smtplib
+import os
+
 
 # enables a admin interface like django to add the contents in the database
 from flask_admin import Admin
@@ -37,10 +39,10 @@ def admin_only(function):
 
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = '8BYkEfBA6O6donzWlSihBXox7C0sKR6b'
+app.config['SECRET_KEY'] = os.environ.get("RESTAURANT_FLASK_SECRETKEY")
 Bootstrap5(app)
 
-
+#os.environ.get("RESTAURANT_FLASK_SECRETKEY")
 # TODO: Configure Flask-Login
 login_manager = LoginManager()
 login_manager.init_app(app)
@@ -62,7 +64,7 @@ class Base(DeclarativeBase):
 
 
 # configuring and initilizing the database
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///posts.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("RESTAURANT_DB_URI")
 db = SQLAlchemy(model_class=Base)
 db.init_app(app)
 admin = Admin(app, name='MyRestaurant', template_mode='bootstrap3')  # admin obj for admin panel with name MyRestaurant
@@ -414,8 +416,8 @@ def forgot_password():
         db.session.commit()
 
         # You can send OTP to the user via email here
-        email = "likithaswin15@gmail.com"
-        password = "pobq blrj jknm nzwj"
+        email = os.environ.get("RESTAURANT_EMAIL")
+        password = os.environ.get("RESTAURANT_PASSWORD")
 
         with smtplib.SMTP("smtp.gmail.com") as connection:
             connection.starttls()
@@ -500,8 +502,8 @@ def contact_us():
 
     if form.validate_on_submit():
         # sending the message the user given in the contact form to us through email
-        email = "likithaswin15@gmail.com"
-        password = "pobq blrj jknm nzwj"
+        email = os.environ.get("RESTAURANT_EMAIL")
+        password = os.environ.get("RESTAURANT_PASSWORD")
 
         with smtplib.SMTP("smtp.gmail.com") as connection:
             connection.starttls()
@@ -538,8 +540,8 @@ def order_now():
         # joining the items names using join method because it is in list
         only_items_names = ", ".join(item_names)
 
-        email = "likithaswin15@gmail.com"
-        password = "pobq blrj jknm nzwj"
+        email = os.environ.get("RESTAURANT_EMAIL")
+        password = os.environ.get("RESTAURANT_PASSWORD")
 
         # sending the mail to the owner what the user orders
         with smtplib.SMTP("smtp.gmail.com") as connection:
