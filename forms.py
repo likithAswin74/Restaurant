@@ -56,5 +56,5 @@ class ConfirmForm(FlaskForm):
     email = EmailField("Email", validators=[DataRequired(), Email(), Length(max=120)])
     phone = StringField('Phone Number', validators=[DataRequired(), Regexp(r'^\+?\d{10,15}$', message="Enter a valid phone number")])
     address = TextAreaField('Delivery Address', validators=[DataRequired(), Length(max=200)])
-    payment_proof = FileField('Upload Payment Proof', validators=[DataRequired(), FileAllowed(['jpg', 'jpeg', 'png', 'pdf'], message='Only images or PDF files are allowed.')])
+    payment_proof = FileField('Upload Payment Proof', validators=[FileAllowed(['jpg', 'jpeg', 'png', 'pdf'], message='Only images or PDF files are allowed.')])
     submit = SubmitField('Confirm', render_kw={"class": "btn btn-success"})
