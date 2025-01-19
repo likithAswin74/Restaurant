@@ -422,8 +422,9 @@ def forgot_password():
         with smtplib.SMTP("smtp.gmail.com") as connection:
             connection.starttls()
             connection.login(user=email, password=password)
+            msg = f"subject:OTP verification\n\n The OTP to change the password is {otp_generated}. The OTP is valid for 1 minute"
             connection.sendmail(from_addr=email, to_addrs=forgot_password_form.email.data,
-                                msg=f"subject:OTP verification\n\n The OTP to change the password is {otp_generated}. The OTP is valid for 1 minute")
+                                msg=msg)
 
         otp_verified = True  # OTP not verified yet
         return render_template("forgot_password.html", forgot=forgot_password_form, verify_otp=verifyotp_form,
@@ -509,8 +510,9 @@ def contact_us():
             connection.starttls()
             connection.login(user=email, password=password)
             # sending the name and the message of the user to our email
+            msg = f"subject:Message from{form.name.data}\n\n {form.message.data}"
             connection.sendmail(from_addr=email, to_addrs=email,
-                                msg=f"subject:Message from{form.name.data}\n\n {form.message.data}")
+                                msg=msg)
 
         # sending the success message as a flash
         flash('Thank you for your message! We will get back to you soon.', 'success')
@@ -561,11 +563,10 @@ def order_now():
         with smtplib.SMTP("smtp.gmail.com") as connection:
             connection.starttls()
             connection.login(user=email, password=password)
+            msg=f"Subject: Order confirmation from Cozy Corner Restaurant\n\nYour order has been placed and will be delivered to you shortly.\nItems Ordered: {only_items_names}"
+
             connection.sendmail(from_addr=email, to_addrs=entered_email,
-                                msg=f"Subject: Order confirmation from Lrdmj Restaurant\n\n"
-                                f"Your order has been placed and will be delivered to you shortly.\n"
-                                f"Items Ordered: {only_items_names}"
-                                )
+                                msg=msg)
 
         # Flashing a success message after order is confirmed
         flash("Your order has been successfully placed! You will receive a confirmation email shortly.", "success")
