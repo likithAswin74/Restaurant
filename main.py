@@ -419,7 +419,7 @@ def forgot_password():
         email = os.environ.get("RESTAURANT_EMAIL")
         password = os.environ.get("RESTAURANT_PASSWORD")
 
-        with smtplib.SMTP("smtp.gmail.com") as connection:
+        with smtplib.SMTP("smtp.gmail.com", 587) as connection:
             connection.starttls()
             connection.login(user=email, password=password)
             msg = f"subject:OTP verification\n\n The OTP to change the password is {otp_generated}. The OTP is valid for 1 minute"
@@ -506,7 +506,7 @@ def contact_us():
         email = os.environ.get("RESTAURANT_EMAIL")
         password = os.environ.get("RESTAURANT_PASSWORD")
 
-        with smtplib.SMTP("smtp.gmail.com") as connection:
+        with smtplib.SMTP("smtp.gmail.com", 587) as connection:
             connection.starttls()
             connection.login(user=email, password=password)
             # sending the name and the message of the user to our email
@@ -546,7 +546,7 @@ def order_now():
         password = os.environ.get("RESTAURANT_PASSWORD")
 
         # sending the mail to the owner what the user orders
-        with smtplib.SMTP("smtp.gmail.com") as connection:
+        with smtplib.SMTP("smtp.gmail.com", 587) as connection:
             connection.starttls()
             connection.login(user=email, password=password)
             # sending the name and the message of the user to our email
@@ -560,7 +560,7 @@ def order_now():
                                     f"Payment Proof: {payment_proof}"
                                 )
 
-        with smtplib.SMTP("smtp.gmail.com") as connection:
+        with smtplib.SMTP("smtp.gmail.com", 587) as connection:
             connection.starttls()
             connection.login(user=email, password=password)
             msg=f"Subject: Order confirmation from Cozy Corner Restaurant\n\nYour order has been placed and will be delivered to you shortly.\nItems Ordered: {only_items_names}"
