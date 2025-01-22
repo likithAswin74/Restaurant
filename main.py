@@ -469,6 +469,8 @@ def new_password():
             user_obj = db.session.execute(db.select(Users).where(Users.email == verified_email)).scalar()
             user_obj.password = hashed_password
             db.session.commit()
+            # Clear the email from the session after success
+            session.pop('entered_email', None)
             flash("password changed successfully")
             return redirect(url_for("login"))
 
