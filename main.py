@@ -12,6 +12,8 @@ import random
 import time
 import smtplib
 import os
+# used to remove the spaces in the parameters from the route
+from urllib.parse import unquote
 
 
 # enables a admin interface like django to add the contents in the database
@@ -340,6 +342,10 @@ def cart_items_delete(id):
 
 @app.route('/add_to_cart/<int:item_id>/<item_category>')
 def add_to_cart(item_id, item_category):
+    # Decode the category to handle spaces. in this if the category is tiffin it works perfectly
+    # if the category is rice and noodles then the url takes the spaces as %20 which is rice%20and%20noodles
+    # to remove the the value unquote is used so that the category will be rice and noodles
+    item_category = unquote(item_category)
     database_name = None
     print(item_id)
     print(item_category)
