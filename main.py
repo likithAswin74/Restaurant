@@ -15,7 +15,6 @@ import os
 # used to remove the spaces in the parameters from the route
 from urllib.parse import unquote
 
-
 # enables a admin interface like django to add the contents in the database
 from flask_admin import Admin
 from flask_admin.contrib.sqla import ModelView
