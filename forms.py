@@ -6,15 +6,9 @@ from flask_wtf.file import FileAllowed
 
 # TODO: Create a RegisterForm to register new users
 class RegisterForm(FlaskForm):
-    email = StringField(
-        "Email",
-        validators=[DataRequired()])
-    password = PasswordField(
-        "Password",
-        validators=[DataRequired()])
-    name = StringField(
-        "Name",
-        validators=[DataRequired()])
+    email = StringField("Email", validators=[DataRequired()])
+    password = PasswordField("Password", validators=[DataRequired()])
+    name = StringField("Name", validators=[DataRequired()])
     submit = SubmitField(
         "Register",
         render_kw={"class": "btn btn-success"}  # Add button styles
