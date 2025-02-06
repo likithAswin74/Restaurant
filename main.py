@@ -570,7 +570,7 @@ def order_now():
         with smtplib.SMTP("smtp.gmail.com", 587) as connection:
             connection.starttls()
             connection.login(user=email, password=password)
-            msg=f"Subject: Order confirmation from Cozy Corner Restaurant\n\nYour order has been placed and will be delivered to you shortly.\nItems Ordered: {only_items_names}"
+            msg=f"Subject: Order confirmation from Cozy Corner Restaurant\n\nHii {name}! Your order has been placed and will be delivered to you shortly.\nItems Ordered: {only_items_names}"
 
             connection.sendmail(from_addr=email, to_addrs=entered_email,
                                 msg=msg)
