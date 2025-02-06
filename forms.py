@@ -9,10 +9,7 @@ class RegisterForm(FlaskForm):
     email = StringField("Email", validators=[DataRequired()])
     password = PasswordField("Password", validators=[DataRequired()])
     name = StringField("Name", validators=[DataRequired()])
-    submit = SubmitField(
-        "Register",
-        render_kw={"class": "btn btn-success"}  # Add button styles
-    )
+    submit = SubmitField("Register",render_kw={"class": "btn btn-success"})  # Add button styles
 
 
 # TODO: Create a LoginForm to login existing users
